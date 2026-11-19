@@ -33,7 +33,7 @@ export default function Form({action, onPostSubmit, children}: FormProps) {
   }
 
 	return (
-    <_Form action={handleSubmit}>
+    <_Form action={handleSubmit} className="form">
       {children}
     </_Form>
   );

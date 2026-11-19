@@ -1,57 +1,20 @@
-"use client";
+import {Satisfy} from "next/font/google";
 
-import {useRouter} from "next/navigation";
-import {useState} from "react";
+import LoginForm from "@/app/login/_components/LoginForm";
 
-import Form from "@/app/_components/Form";
-import TextInput from "@/app/_components/TextInput";
+const satisfy = Satisfy({
+  weight: "400",
+});
 
 export default function Page() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  function handlePostSubmit(formData: FormData) {
-    router.push("/");
-  }
-
 	return (
     <div className="login">
-      <span className="login__logo">
+      <h1 className={`login__logo ${satisfy.className}`}>
         Absencia
-      </span>
+      </h1>
 
       <div className="login__formContainer">
-        <Form action="login" onPostSubmit={handlePostSubmit}>
-          <h1>
-            Connexion
-          </h1>
-
-          <TextInput
-            type="text"
-            name="email"
-            label="Email"
-            value={email}
-            placeholder="Email"
-            onChange={event => setEmail(event.target.value)}
-          />
-
-          <TextInput
-            type="password"
-            name="password"
-            label="Mot de passe"
-            value={password}
-            placeholder="Mot de passe"
-            autoComplete="current-password"
-            onChange={event => setPassword(event.target.value)}
-          />
-
-          {/* <app-form-footer> */}
-            <button type="submit" className="button button__submit">
-              Se connecter
-            </button>
-          {/* </app-form-footer> */}
-        </Form>
+        <LoginForm />
       </div>
     </div>
   );

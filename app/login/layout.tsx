@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 export default function Layout({children}: LayoutProps<"/login">) {
   return (
     <div className={`${geistSans.variable} ${geistMono.variable}`}>
-      Layout
       {children}
     </div>
   );
