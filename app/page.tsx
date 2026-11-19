@@ -1,10 +1,9 @@
 import Image from "next/image";
-import BlogPostList from "@/app/_components/BlogPostList";
 
 export default function Home() {
   return (
     <main>
-      <BlogPostList />
+      /
     </main>
   );
 

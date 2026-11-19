@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
 @import "./base/base.css";
+@import "./base/badge.css";
 
 @import "./configs/colors.css";

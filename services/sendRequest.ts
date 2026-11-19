@@ -1,10 +1,7 @@
 import {cookies} from "next/headers";
-import {NextResponse} from "next/server";
 
 export async function sendRequest(route: string, options: RequestInit) {
   const cookieStore = await cookies();
-
-  console.log("-----------------------------------------------", cookieStore.getAll());
 
   const token = cookieStore.get(process.env.JWT_COOKIE!)?.value;
 

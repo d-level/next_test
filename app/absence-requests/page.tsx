@@ -1,9 +1,9 @@
-import AbsenceRequestList from "@/app/absence-requests/_components/AbsenceRequestList";
+import AbsenceRequestTable from "@/app/absence-requests/_components/AbsenceRequestTable";
 
 export default function Page() {
 	return (
-    <div>
-      <AbsenceRequestList />
-    </div>
+    <>
+      <AbsenceRequestTable />
+    </>
   );
 }
