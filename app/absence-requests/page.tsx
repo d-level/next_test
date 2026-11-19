@@ -1,11 +1,9 @@
-// import {withAuth} from "@/lib/auth";
-
-// export const getServerSideProps = withAuth();
+import AbsenceRequestList from "@/app/absence-requests/_components/AbsenceRequestList";
 
 export default function Page() {
 	return (
-    <h1>
-      Absence requests
-    </h1>
+    <div>
+      <AbsenceRequestList />
+    </div>
   );
 }

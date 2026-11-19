@@ -3,24 +3,17 @@ import {NextResponse} from "next/server";
 export async function POST(request: Request) {
 	const {email, password} = await request.json();
 
+  const formData = new FormData();
+  formData.append("email", email);
+  formData.append("password", password);
+
   const authResponse = await fetch(`${process.env.API_URL}/login`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      password,
-    }),
+    body: formData,
   });
 
-  if (authResponse.status === 401) {
-    return NextResponse.json(
-      JSON.stringify("Identifiants invalides."),
-      {
-        status: 401,
-      },
-    );
+  if (!authResponse.ok) {
+    return authResponse;
   }
 
   const {token} = await authResponse.json();
@@ -32,10 +25,11 @@ export async function POST(request: Request) {
     },
   );
 
-  loginResponse.cookies.set("absencia:jwt", token, {
+  loginResponse.cookies.set(String(process.env.JWT_COOKIE), token, {
     httpOnly: true,
-    secure: false,
-    maxAge: 60 * 60 * 24 * 7,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: Number(process.env.JWT_MAX_AGE),
     path: "/",
   });
 
