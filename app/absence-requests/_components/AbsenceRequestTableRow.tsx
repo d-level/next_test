@@ -45,7 +45,7 @@ export default async function AbsenceRequestTableRow({absenceRequest}: {absenceR
       <td>
         <div className="actions">
           {isStatusEditable(absenceRequest) && (
-            <button className="button updateButton" /* onClick={() => handleClickUpdateButton(absenceRequest)} */>
+            <button className="button button__update" /* onClick={() => handleClickUpdateButton(absenceRequest)} */>
               {/* permissions="['CAN_PATCH_ABSENCE_REQUEST']" */}
               {/* <i className="pi pi-file-edit"></i> */}
 
@@ -55,7 +55,7 @@ export default async function AbsenceRequestTableRow({absenceRequest}: {absenceR
             </button>
           )}
 
-          <button className="button deleteButton" /* onClick={() => handleClickDeleteButton(absenceRequest)} */>
+          <button className="button button__delete" /* onClick={() => handleClickDeleteButton(absenceRequest)} */>
             {/* permissions="['CAN_DELETE_ABSENCE_REQUEST']" */}
             {/* <i className="pi pi-trash"></i> */}
 

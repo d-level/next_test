@@ -1,0 +1,70 @@
+.no-results {
+  padding: 8px;
+  background-color: var(--color-white);
+  /* color: scale-color($tertiary, $alpha: -50%); */
+  text-align: center;
+  font-style: italic;
+}
+
+.absence-request-table th {
+  padding: 8px;
+  background-color: var(--color-white);
+  color: var(--color-tertiary);
+}
+
+.absence-request-table td {
+	padding: 8px;
+	color: var(--color-tertiary);
+}
+
+.absence-request-table td .actions {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 8px;
+}
+
+.button.button__update {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 8px;
+  padding: 4px 8px;
+  background-color: var(--color-tertiary);
+  color: var(--color-white);
+  font-size: .75rem;
+  transition: background-color 0.2s;
+
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
+}
+
+/* .button.button__update .pi {
+  font-size: .75rem;
+} */
+
+button.button__update:hover {
+  background-color: color-mix(in oklch, var(--color-tertiary), black 10%);
+}
+
+.button.button__delete {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 8px;
+  padding: 4px 8px;
+  background-color: var(--color-error);
+  color: var(--color-white);
+  font-size: .75rem;
+  transition: background-color 0.2s;
+
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
+}
+
+/* .button.button__delete .pi {
+  font-size: .75rem;
+} */
+
+button.button__delete:hover {
+  background-color: color-mix(in oklch, var(--color-error), black 10%);
+}

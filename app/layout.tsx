@@ -18,7 +18,11 @@ export default function Layout({children}: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${quicksand.className} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        {children}
+        <main className="main">
+          <div className="container">
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   );

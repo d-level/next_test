@@ -8,12 +8,12 @@ export default async function AbsenceRequestTable() {
 	return (
     <>
       {getAbsenceRequestsResponse.absenceRequests.length === 0 && (
-        <div className="noResults">
+        <div className="no-results">
           Aucun résultat.
         </div>
       )}
 
-      <table>
+      <table class="absence-request-table">
         <thead>
           <tr>
             <th>

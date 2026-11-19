@@ -6,7 +6,7 @@ type BadgeProps = {
 
 export default function Badge({children}: BadgeProps) {
   return (
-    <div className="badge bg-tertiary">
+    <div className="badge">
       {children}
     </div>
   );
