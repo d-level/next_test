@@ -24,7 +24,7 @@ export default async function BlogPostList() {
   return (
     <ul>
       {blogPosts.map(blogPost => (
-        <BlogPostListItem blogPost={blogPost} />
+        <BlogPostListItem blogPost={blogPost} key={blogPost.slug} />
       ))}
     </ul>
   );

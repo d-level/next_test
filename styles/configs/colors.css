@@ -1,0 +1,18 @@
+@theme {
+  /* Reset default Tailwind colors */
+  --color-*: initial;
+
+  --color-primary: oklch(0.1763 0.0493 259.59);
+  --color-secondary: oklch(0.9444 0.1372 105.16);
+  --color-tertiary: oklch(0.5516 0.1081 232.07);
+
+	--color-white: oklch(1 0 0);
+	--color-black: oklch(0 0 0);
+	--color-shadow: oklch(0 0 0 / 13.3%);
+
+  --color-light: oklch(0.9612 0 0);
+  --color-dark: oklch(0.3749 0.067 219.05);
+
+  --color-success: oklch(0.7043 0.1561 143.7);
+  --color-error: oklch(0.6774 0.1987 28.13);
+}

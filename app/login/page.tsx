@@ -1,55 +1,58 @@
 "use client";
 
 import {useRouter} from "next/navigation";
-import {SubmitEvent, useState} from "react";
+import {useState} from "react";
+
+import Form from "@/app/_components/Form";
+import TextInput from "@/app/_components/TextInput";
 
 export default function Page() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleSubmit(event: SubmitEvent) {
-    event.preventDefault();
-
-    const response = await fetch("http://localhost:3000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-
-    if (!response.ok) {
-      window.alert("Identifiants invalides.");
-
-      return;
-    }
-
+  function handlePostSubmit(formData: FormData) {
     router.push("/");
   }
 
 	return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        required
-        onChange={event => setEmail(event.target.value)}
-      />
+    <div className="login">
+      <span className="login__logo">
+        Absencia
+      </span>
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        required
-        onChange={event => setPassword(event.target.value)}
-      />
+      <div className="login__formContainer">
+        <Form action="login" onPostSubmit={handlePostSubmit}>
+          <h1>
+            Connexion
+          </h1>
 
-      <input type="submit" value="Login" />
-    </form>
+          <TextInput
+            type="text"
+            name="email"
+            label="Email"
+            value={email}
+            placeholder="Email"
+            onChange={event => setEmail(event.target.value)}
+          />
+
+          <TextInput
+            type="password"
+            name="password"
+            label="Mot de passe"
+            value={password}
+            placeholder="Mot de passe"
+            autoComplete="current-password"
+            onChange={event => setPassword(event.target.value)}
+          />
+
+          {/* <app-form-footer> */}
+            <button type="submit" className="button button__submit">
+              Se connecter
+            </button>
+          {/* </app-form-footer> */}
+        </Form>
+      </div>
+    </div>
   );
 }
