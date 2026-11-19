@@ -1,0 +1,73 @@
+import BackLink from "@/app/_components/BackLink";
+
+export default function Page() {
+	return (
+    <>
+      <div>
+        <BackLink href="/absence-requests" />
+
+        <h1>
+          Nouvelle demande d'absence
+        </h1>
+      </div>
+
+      {/* <app-form
+        [formGroup]="formGroup"
+        [method]="formMethod"
+        [action]="formAction"
+        (postSubmit)="postSubmit($event)"
+        *ngxPermissionsOnly="['CAN_POST_ABSENCE_REQUEST']"
+      >
+        <div>
+          <app-back-link routerLink="/absence-requests" />
+
+          <h1>
+            Nouvelle demande d'absence
+          </h1>
+        </div>
+
+        <app-form-group>
+          <app-datepicker
+            [formGroup]="formGroup"
+            name="startedAt"
+            label="Date de début"
+            placeholder="Sélectionnez une date de début"
+          />
+
+          <app-datepicker
+            [formGroup]="formGroup"
+            name="endedAt"
+            label="Date de fin"
+            placeholder="Sélectionnez une date de fin"
+          />
+        </app-form-group>
+
+        <app-select
+          [formGroup]="formGroup"
+          name="type"
+          label="Type d'absence"
+          placeholder="Sélectionnez un type d'absence"
+          [options]="absenceTypes"
+        />
+
+        <app-text-input
+          [formGroup]="formGroup"
+          type="text"
+          name="reason"
+          label="Motif"
+          placeholder="Saisissez un motif"
+        />
+
+        <app-form-footer>
+          <a routerLink="/absence-requests" class="button cancelButton">
+            Annuler
+          </a>
+
+          <button type="submit" class="button submitButton">
+            Créer
+          </button>
+        </app-form-footer>
+      </app-form> */}
+    </>
+  );
+}

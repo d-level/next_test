@@ -6,10 +6,19 @@
   font-style: italic;
 }
 
+.absence-request-table {
+  width: 100%;
+}
+
+.absence-request-table tr {
+  background-color: var(--color-white);
+}
+
 .absence-request-table th {
   padding: 8px;
   background-color: var(--color-white);
   color: var(--color-tertiary);
+  text-align: left;
 }
 
 .absence-request-table td {
@@ -67,4 +76,9 @@ button.button__update:hover {
 
 button.button__delete:hover {
   background-color: color-mix(in oklch, var(--color-error), black 10%);
+}
+
+.remaining {
+  margin-top: 8px;
+  text-align: end;
 }

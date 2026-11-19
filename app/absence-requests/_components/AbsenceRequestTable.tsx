@@ -2,6 +2,8 @@ import AbsenceRequestTableRow from "@/app/absence-requests/_components/AbsenceRe
 import {GetAbsenceRequestsResponse} from "@/models/GetAbsenceRequestsResponse";
 import {getAbsenceRequests} from "@/services/getAbsenceRequests";
 
+import "@/styles/_components/AbsenceRequestTable.css";
+
 export default async function AbsenceRequestTable() {
   const getAbsenceRequestsResponse: GetAbsenceRequestsResponse = await getAbsenceRequests();
 
@@ -13,7 +15,7 @@ export default async function AbsenceRequestTable() {
         </div>
       )}
 
-      <table class="absence-request-table">
+      <table className="absence-request-table">
         <thead>
           <tr>
             <th>
@@ -47,6 +49,11 @@ export default async function AbsenceRequestTable() {
           ))}
         </tbody>
       </table>
+
+      <p className="remaining">
+        {getAbsenceRequestsResponse.remainingPaidLeaves} congés payés restants<br />
+        {getAbsenceRequestsResponse.remainingEmployeeWtr} RTT employé restantes
+      </p>
 
       {/* <app-absence-request-update-dialog
         [(visible)]="updateDialogVisible"
