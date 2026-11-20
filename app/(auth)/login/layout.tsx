@@ -1,36 +1,26 @@
 import type {Metadata} from "next";
-import {Quicksand} from "next/font/google";
 
-import Footer from "@/app/_components/Footer";
-import Header from "@/app/_components/Header";
+import {louisGeorgeCafe} from "@/app/_fonts";
 
-import "../styles/index.css";
-
-const quicksand = Quicksand({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// TODO: Only import login page CSS.
+import "../../../styles/index.css";
 
 export const metadata: Metadata = {
   title: "Absencia",
-  description: "Absence request app",
+  description: "Login page",
   applicationName: "Absencia",
 };
 
 export default function Layout({children}: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${quicksand.className} h-full antialiased`}>
+    <html lang="en" className={`${louisGeorgeCafe.className} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <div className="app">
-          <Header />
-
           <main className="main">
             <div className="container">
               {children}
             </div>
           </main>
-
-          <Footer />
         </div>
       </body>
     </html>

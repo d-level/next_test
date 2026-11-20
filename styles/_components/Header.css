@@ -65,28 +65,3 @@
 .header__navbar__list__item__link:hover, .header__navbar__list__item__linkActive {
   color: var(--color-light);
 }
-
-.header__logOutLink {
-  display: flex;
-  align-items: center;
-  column-gap: 8px;
-  padding: 4px 8px;
-  border: none;
-  border-radius: 4px;
-  /* background-color: scale-color($error, $alpha: -50%); */
-  color: var(--color-light);
-  font-size: 0.75rem;
-  transition: background-color 0.2s;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-}
-
-.header__logOutLink:hover {
-  background-color: var(--color-error);
-}
-
-.header__logOutLink__icon {
-  font-size: 0.75rem;
-}

@@ -1,15 +1,21 @@
 import Link from "next/link";
 
+import LogOut from "@/app/_components/LogOut";
+
 import "@/styles/_components/Header.css";
 
+type HeaderProps = {
+  logoFontClassName: string;
+}
+
 // TODO: Only show is the user is logged.
-export default function Header() {
+export default function Header({logoFontClassName}: HeaderProps) {
 	return (
     <header className="header">
       <nav className="header__navbar">
         <ul className="header__navbar__list">
           <li className="header__navbar__list__item">
-            <Link href="/" className="logoLink">
+            <Link href="/" className={`logoLink ${logoFontClassName}`}>
               Absencia
             </Link>
           </li>
@@ -56,13 +62,7 @@ export default function Header() {
         </ul>
       </nav>
 
-      {/* <app-form [formGroup]="logoutFormGroup" [method]="logoutFormMethod" [action]="logoutFormAction" (postSubmit)="postLogout($event)">
-        <button className="header__logOutLink">
-          <i className="pi pi-sign-out header__logOutLink__icon"></i>
-
-          Se déconnecter
-        </button>
-      </app-form> */}
+      <LogOut />
     </header>
   );
 }

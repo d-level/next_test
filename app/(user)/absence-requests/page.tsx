@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {Suspense} from "react";
 
-import AbsenceRequestTable from "@/app/absence-requests/_components/AbsenceRequestTable";
+import AbsenceRequestTable from "@/app/(user)/absence-requests/_components/AbsenceRequestTable";
 
 import "@/styles/absence-requests/page.css";
 

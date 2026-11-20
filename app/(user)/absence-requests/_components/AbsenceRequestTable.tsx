@@ -1,11 +1,13 @@
-import AbsenceRequestTableRow from "@/app/absence-requests/_components/AbsenceRequestTableRow";
+import AbsenceRequestTableRow from "@/app/(user)/absence-requests/_components/AbsenceRequestTableRow";
+import {request} from "@/lib/api";
 import {GetAbsenceRequestsResponse} from "@/models/GetAbsenceRequestsResponse";
-import {getAbsenceRequests} from "@/services/getAbsenceRequests";
 
 import "@/styles/_components/AbsenceRequestTable.css";
 
 export default async function AbsenceRequestTable() {
-  const getAbsenceRequestsResponse: GetAbsenceRequestsResponse = await getAbsenceRequests();
+  const getAbsenceRequestsResponse: GetAbsenceRequestsResponse = await request("/absence-requests", {
+    method: "GET",
+  });
 
 	return (
     <>

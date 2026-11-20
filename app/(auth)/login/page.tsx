@@ -1,10 +1,5 @@
-import {Satisfy} from "next/font/google";
-
-import LoginForm from "@/app/login/_components/LoginForm";
-
-const satisfy = Satisfy({
-  weight: "400",
-});
+import {satisfy} from "@/app/_fonts";
+import LoginForm from "@/app/(auth)/login/_components/LoginForm";
 
 export default function Page() {
 	return (

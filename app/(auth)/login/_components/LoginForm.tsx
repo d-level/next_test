@@ -1,23 +1,35 @@
 "use client";
 
 import {useRouter} from "next/navigation";
-import {useState} from "react";
+import {signIn} from "next-auth/react";
+import {SubmitEvent, useState} from "react";
 
-import Form from "@/app/_components/Form";
 import FormFooter from "@/app/_components/FormFooter";
 import TextInput from "@/app/_components/TextInput";
 
 export default function Page() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("matteo@absencia.wip");
+  const [password, setPassword] = useState("admin");
 
-  function handlePostSubmit(formData: FormData) {
-    router.push("/");
+  async function handleSubmit(event: SubmitEvent) {
+    event.preventDefault();
+
+    const response = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (response?.error) {
+      throw new Error("Login: KO");
+    }
+
+    router.push("/absence-requests");
   }
 
 	return (
-    <Form action="login" onPostSubmit={handlePostSubmit}>
+    <form onSubmit={handleSubmit}>
       <h1>
         Connexion
       </h1>
@@ -48,6 +60,6 @@ export default function Page() {
           Se connecter
         </button>
       </FormFooter>
-    </Form>
+    </form>
   );
 }
