@@ -8,7 +8,6 @@ type HeaderProps = {
   logoFontClassName: string;
 }
 
-// TODO: Only show is the user is logged.
 export default function Header({logoFontClassName}: HeaderProps) {
 	return (
     <header className="header">

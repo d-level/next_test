@@ -1,6 +1,8 @@
 import {satisfy} from "@/app/_fonts";
 import LoginForm from "@/app/(auth)/login/_components/LoginForm";
 
+import "@/styles/login.css";
+
 export default function Page() {
 	return (
     <div className="login">

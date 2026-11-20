@@ -1,6 +1,5 @@
 import "@/styles/_components/Footer.css"
 
-// TODO: Only show is the user is logged.
 export default function Footer() {
 	return (
     <footer className="footer">

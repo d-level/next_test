@@ -3,3 +3,23 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.title-container .button__create {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: var(--color-success);
+  color: var(--color-white);
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: color-mix(in oklch, var(--color-success), black 10%);
+  }
+
+  .pi {
+    font-size: 0.75rem;
+    font-weight: 900;
+  }
+}

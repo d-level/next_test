@@ -1,11 +1,3 @@
-.no-results {
-  padding: 8px;
-  background-color: var(--color-white);
-  /* color: scale-color($tertiary, $alpha: -50%); */
-  text-align: center;
-  font-style: italic;
-}
-
 .absence-request-table {
   width: 100%;
 }
@@ -30,6 +22,14 @@
   display: flex;
   justify-content: flex-end;
   column-gap: 8px;
+}
+
+.absence-request-no-results {
+  padding: 8px;
+  background-color: var(--color-white);
+  color: color-mix(in oklch, var(--color-tertiary) 50%, transparent);
+  text-align: center;
+  font-style: italic;
 }
 
 .button.button__update {

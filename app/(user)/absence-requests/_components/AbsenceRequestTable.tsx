@@ -11,46 +11,46 @@ export default async function AbsenceRequestTable() {
 
 	return (
     <>
-      {getAbsenceRequestsResponse.absenceRequests.length === 0 && (
-        <div className="no-results">
+      {getAbsenceRequestsResponse.absenceRequests.length > 0 ? (
+        <table className="absence-request-table">
+          <thead>
+            <tr>
+              <th>
+                Du
+              </th>
+
+              <th>
+                Au
+              </th>
+
+              <th>
+                Type
+              </th>
+
+              <th>
+                Statut
+              </th>
+
+              <th>
+                Motif
+              </th>
+
+              {/* Delete absence request row */}
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {getAbsenceRequestsResponse.absenceRequests.map(absenceRequest => (
+              <AbsenceRequestTableRow absenceRequest={absenceRequest} key={absenceRequest.id} />
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div className="absence-request-no-results">
           Aucun résultat.
         </div>
       )}
-
-      <table className="absence-request-table">
-        <thead>
-          <tr>
-            <th>
-              Du
-            </th>
-
-            <th>
-              Au
-            </th>
-
-            <th>
-              Type
-            </th>
-
-            <th>
-              Statut
-            </th>
-
-            <th>
-              Motif
-            </th>
-
-            {/* Delete absence request row */}
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {getAbsenceRequestsResponse.absenceRequests.map(absenceRequest => (
-            <AbsenceRequestTableRow absenceRequest={absenceRequest} key={absenceRequest.id} />
-          ))}
-        </tbody>
-      </table>
 
       <p className="remaining">
         {getAbsenceRequestsResponse.remainingPaidLeaves} congés payés restants<br />

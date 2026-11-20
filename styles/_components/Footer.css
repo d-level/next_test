@@ -2,22 +2,22 @@
   padding: 32px 0;
   position: relative;
   background-color: var(--color-primary);
-}
 
-.footer__copyright {
-  margin-bottom: 8px;
-  color: var(--color-tertiary);
-  font-size: .75rem;
-}
+  .footer__copyright {
+    margin-bottom: 8px;
+    color: var(--color-tertiary);
+    font-size: 0.75rem;
+  }
 
-.footer__authors {
-  color: var(--color-tertiary);
-  font-size: .75rem;
-  font-style: italic;
-}
+  .footer__authors {
+    color: var(--color-tertiary);
+    font-size: 0.75rem;
+    font-style: italic;
 
-.footer__authors a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
 }
