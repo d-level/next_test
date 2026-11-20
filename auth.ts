@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, {CredentialsSignin} from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 export const {handlers, signIn, signOut, auth} = NextAuth({
@@ -24,47 +24,39 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
         formData.append("email", String(credentials.email));
         formData.append("password", String(credentials.password));
 
-        try {
-          const loginResponse = await fetch(`${process.env.API_URL}/login`, {
-            method: "POST",
-            body: formData,
-          });
+        const loginResponse = await fetch(`${process.env.API_URL}/login`, {
+          method: "POST",
+          body: formData,
+        });
+        const loginBody = await loginResponse.json();
 
-          if (!loginResponse.ok) {
-            return null;
-          }
-
-          const {token} = await loginResponse.json();
-
-          const userResponse = await fetch(`${process.env.API_URL}/users/current`, {
-            method: "GET",
-            headers: {
-              "Authorization": `Bearer ${token}`,
-            },
-          });
-
-          if (!userResponse.ok) {
-            return null;
-          }
-
-          const user = await userResponse.json();
-
-          return {
-            id: user.id,
-            name: `${user.firstName} ${user.lastName}`,
-            email: user.email,
-            role: user.role,
-            service: user.service,
-            token,
-          };
-        }
-        catch (error) {
-          console.error("Failed to log in:", error);
+        if (!loginResponse.ok) {
+          throw new CredentialsSignin();
         }
 
-        return null;
+        const userResponse = await fetch(`${process.env.API_URL}/users/current`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${loginBody.token}`,
+          },
+        });
+
+        if (!userResponse.ok) {
+          return null;
+        }
+
+        const user = await userResponse.json();
+
+        return {
+          id: user.id,
+          name: `${user.firstName} ${user.lastName}`,
+          email: user.email,
+          role: user.role,
+          service: user.service,
+          token: loginBody.token,
+        };
       },
-    })
+    }),
   ],
   session: {
     maxAge: 60 * 60 * 24 * 7,
@@ -81,12 +73,9 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
       return token;
     },
     async session({session, token}) {
-      if (!session.user) {
-        return session;
-      }
-
       (session.user as Record<string, any>).id = token.sub;
       (session.user as Record<string, any>).role = token.role;
+      (session.user as Record<string, any>).token = token.token;
 
       return session;
     }
@@ -95,4 +84,5 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
     signIn: "/login",
   },
   secret: process.env.AUTH_SECRET,
+  debug: true,
 });

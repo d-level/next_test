@@ -1,5 +1,6 @@
 .badge {
-  display: inline-flex;
+  display: inline-block;
+  line-height: 1;
   padding: 4px 8px;
   border-radius: 4px;
   background-color: var(--color-tertiary);

@@ -11,9 +11,12 @@ export default function Page() {
   const router = useRouter();
   const [email, setEmail] = useState("matteo@absencia.wip");
   const [password, setPassword] = useState("admin");
+  const [error, setError] = useState(false);
 
   async function handleSubmit(event: SubmitEvent) {
     event.preventDefault();
+
+    setError(false);
 
     const response = await signIn("credentials", {
       email,
@@ -21,15 +24,17 @@ export default function Page() {
       redirect: false,
     });
 
-    if (response?.error) {
-      throw new Error("Login: KO");
+    if (response.error === "CredentialsSignin") {
+      setError(true);
+
+      return;
     }
 
     router.push("/absence-requests");
   }
 
 	return (
-    <form onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit}>
       <h1>
         Connexion
       </h1>
@@ -54,6 +59,12 @@ export default function Page() {
         autoComplete="current-password"
         onChange={event => setPassword(event.target.value)}
       />
+
+      {error && (
+        <span class="error">
+          Identifiants invalides.
+        </span>
+      )}
 
       <FormFooter>
         <button type="submit" className="button button__submit">

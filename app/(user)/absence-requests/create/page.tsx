@@ -1,10 +1,12 @@
 import CreateAbsenceRequestForm from "@/app/(user)/absence-requests/create/_components/CreateAbsenceRequestForm";
 import BackLink from "@/app/_components/BackLink";
 
+import "@/styles/absence-requests/create/page.css";
+
 export default function Page() {
 	return (
     <>
-      <div>
+      <div className="form-header">
         <BackLink href="/absence-requests" />
 
         <h1>

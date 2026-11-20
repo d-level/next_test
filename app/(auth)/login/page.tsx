@@ -6,9 +6,9 @@ import "@/styles/login.css";
 export default function Page() {
 	return (
     <div className="login">
-      <h1 className={`login__logo ${satisfy.className}`}>
+      <span className={`login__logo ${satisfy.className}`}>
         Absencia
-      </h1>
+      </span>
 
       <div className="login__formContainer">
         <LoginForm />

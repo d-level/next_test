@@ -2,12 +2,12 @@
   display: inline-flex;
   align-items: center;
   column-gap: 2px;
-  /* color: scale-color($tertiary, $alpha: -50%); */
+  color: color-mix(in oklch, var(--color-tertiary) 50%, transparent);
   font-size: 0.75rem;
   font-weight: 900;
   transition: color 0.2s;
-}
 
-.back-link:hover {
-  color: var(--color-tertiary);
+  &:hover {
+    color: var(--color-tertiary);
+  }
 }

@@ -8,15 +8,15 @@ import DatePicker from "@/app/_components/DatePicker";
 import Form from "@/app/_components/Form";
 import FormFooter from "@/app/_components/FormFooter";
 import FormGroup from "@/app/_components/FormGroup";
-import TextInput from "@/app/_components/TextInput";
 import Select from "@/app/_components/Select";
-import {absenceTypeStrings} from "@/entities/AbsenceType";
+import TextInput from "@/app/_components/TextInput";
+import {AbsenceType, absenceTypeStrings} from "@/entities/AbsenceType";
 
 export default function CreateAbsenceRequestForm() {
   const router = useRouter();
-  const [startedAt, setStartedAt] = useState(undefined);
-  const [endedAt, setEndedAt] = useState(undefined);
-  const [absenceType, setAbsenceType] = useState(undefined);
+  const [startedAt, setStartedAt] = useState<Date|null>(null);
+  const [endedAt, setEndedAt] = useState<Date|null>(null);
+  const [absenceType, setAbsenceType] = useState<AbsenceType|null>(null);
   const [reason, setReason] = useState("");
 
   function handlePostSubmit() {
@@ -24,34 +24,40 @@ export default function CreateAbsenceRequestForm() {
   }
 
 	return (
-    <Form action="" onPostSubmit={handlePostSubmit}>
+    <Form method="POST" action="/absence-requests" onPostSubmit={handlePostSubmit}>
       {/* permissions="['CAN_POST_ABSENCE_REQUEST']" */}
 
       <FormGroup>
         <DatePicker
           name="startedAt"
           label="Date de début"
+          value={startedAt}
           placeholder="Sélectionnez une date de début"
           required={true}
           errors={{}}
+          onChange={setStartedAt}
         />
 
         <DatePicker
           name="endedAt"
           label="Date de fin"
+          value={endedAt}
           placeholder="Sélectionnez une date de fin"
           required={true}
           errors={{}}
+          onChange={setEndedAt}
         />
       </FormGroup>
 
       <Select
         name="type"
         label="Type d'absence"
+        value={absenceType}
         placeholder="Sélectionnez un type d'absence"
         required={true}
         errors={{}}
         options={absenceTypeStrings}
+        onChange={setAbsenceType}
       />
 
       <TextInput

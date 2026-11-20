@@ -4,7 +4,7 @@ import {absenceRequestStatusStrings} from "@/entities/AbsenceRequestStatus";
 import {absenceTypeStrings} from "@/entities/AbsenceType";
 
 function isStatusEditable(absenceRequest: AbsenceRequest) {
-  return true;
+  return false;
 }
 
 export default async function AbsenceRequestTableRow({absenceRequest}: {absenceRequest: AbsenceRequest}) {

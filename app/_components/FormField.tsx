@@ -1,5 +1,7 @@
 import {ReactNode} from "react";
 
+import "@/styles/_components/FormField.css";
+
 type FormFieldProps = {
   label: string;
   required: boolean;
@@ -14,7 +16,7 @@ export default function FormField({label, required, errors, children}: FormField
         {label}
 
         {required && (
-          <span>
+          <span className="form-field__label__required">
             *
           </span>
         )}

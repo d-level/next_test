@@ -9,46 +9,32 @@
   position: absolute;
   background-color: var(--color-secondary);
 
+  .login__logo {
+    color: var(--color-tertiary);
+    font-size: 7rem;
+    font-weight: 900;
+
+    @media (max-width: 768px) {
+      font-size: 3rem;
+    }
+  }
+
+  .login__formContainer {
+    width: 300px;
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+    }
+  }
+
+  .error {
+    color: var(--color-error);
+    font-size: 0.9rem;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
   }
-}
-
-.login__logo {
-  color: var(--color-tertiary);
-  font-size: 7rem;
-  font-weight: 900 !important;
-
-  @media (max-width: 768px) {
-    font-size: 3rem;
-  }
-}
-
-.login__formContainer {
-  width: 300px;
-}
-
-.button {
-  padding: 8px;
-  border: none;
-  border-radius: 4px;
-  background-color: var(--color-tertiary);
-  color: var(--color-white);
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 700;
-  transition: background-color .2s;
-}
-
-.button:hover {
-  background-color: color-mix(in oklch, var(--color-tertiary), black 10%);
-}
-
-.button__submit {
-  background-color: var(--color-success);
-  color: var(--color-white);
-}
-
-.button__submit:hover {
-  background-color: color-mix(in oklch, var(--color-success), black 10%);
 }
